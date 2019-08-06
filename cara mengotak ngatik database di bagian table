@@ -1,0 +1,135 @@
+pertama kita install dulu mysql yaitu dengan : sudo apt-get install mysql-server
+kemudian jalankan dengan mengtik : sudo mysql
+kalo sudah kamu bisa mengtikkan : create database [nama data base kita]
+seperti ini gambarannya jika berhasil : 
+
+
+mysql> create database pondokit;
+Query OK, 1 row affected (0.14 sec)
+
+kemudian coba kita tampilkan apakah data base kita sudah ada ?
+dengan ketik : show databses;
+kalo sudah maka tampilannya akan menjadi seperi ini ;
+
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| pondokit           |
+| rakbuku            |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+
+nah disitu sudah ada data base yang kita buat tadi .
+kalo sudah silahkan masuk ke databse kita tadi dengan ketik : use pondokit;
+kemudian kita buat table nya dengan mengetik : create table pondok_multimedia(
+maka akan tidak muncul apa2 :D
+
+tp ya emang begitulah,berarti itu berhasil kmd dibawahnya  ketik : id int (225) NOT NULL auto_increment PRIMARY KEY,
+itu agar bisa auto menambah id dalm kita membuat table kita nantinya 
+kmd buat nama kolom dari table dengan mengetik : nama_santri varchar (225),
+terus kita buat lagi : jumlah_santri varchar (225),
+dan buat lagi : jumlah_no_santri varchar (225));
+maka hsilnya seperti ini : 
+
+
+
+mysql>  create table pondok_multimedia(
+    ->  id int (225) NOT NULL auto_increment PRIMARY KEY,
+    ->  nama_santri varchar (225),
+    ->  jumlah_santri varchar (225),
+    -> jumlah_no_santri varchar (225));  
+    Query OK, 0 rows affected (0.28 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_pondokit |
++--------------------+
+| pondok_imers       |
+| pondok_koki        |
+| pondok_multimedia  |
+| pondok_programmer  |
++--------------------+
+4 rows in set (0.00 sec)
+
+
+ 
+ 
+ kalo sudah,kita isi table nya yaitu dengan mengetik : 
+ insert into pondok_multimedia(nama_santri,jumlah_santri,jumlah_no_santri)values("arifin","pertama",50);
+  maka hasilnya seperti ini : 
+  
+  mysql> select * from pondok_multimedia;
++----+-------------+---------------+------------------+
+| id | nama_santri | jumlah_santri | jumlah_no_santri |
++----+-------------+---------------+------------------+
+|  1 | arifin      | pertama       | 50               |
++----+-------------+---------------+------------------+
+1 row in set (0.00 sec)
+ 
+ 
+ dan apabila kita ingin menambah isi dari table kita maka tinggal mengganti bagian kata setelah (values) seperti ini :
+ insert into pondok_multimedia(nama_santri,jumlah_santri,jumlah_no_santri)values("angga","kedua",50);
+ maka tampilannya menjadi : 
+ 
+ mysql> select * from pondok_multimedia;
++----+-------------+---------------+------------------+
+| id | nama_santri | jumlah_santri | jumlah_no_santri |
++----+-------------+---------------+------------------+
+|  1 | arifin      | pertama       | 50               |
+|  2 | angga       | kedua         | 50               |
++----+-------------+---------------+------------------+
+2 rows in set (0.01 sec)
+
+
+ada juga bagi kalian yang ingin mengubah nama dari table dengan cara ketik :
+ 
+ ALTER TABLE pondok_multimedia  RENAME TO buku_multimedia;
+ 
+ maka jadi nya seperti :
+ 
+ mysql> show tables;
++--------------------+
+| Tables_in_pondokit |
++--------------------+
+| buku_multimedia    |
+| pondok_imers       |
+| pondok_koki        |
+| pondok_programmer  |
++--------------------+
+4 rows in set (0.01 sec)
+
+dan ada pula cara apabila kita ingin mengganti / mengubah isi dari table  ketik aja :
+UPDATE buku_multimedia SET nama_santri="hilman",jumlah_santri="ketiga";
+maka tampilannya menjdi :
+
+
+mysql> select * from buku_multimedia;
++----+-------------+---------------+------------------+
+| id | nama_santri | jumlah_santri | jumlah_no_santri |
++----+-------------+---------------+------------------+
+|  1 | hilman      | ketiga        | 50               |
+|  2 | hilman      | ketiga        | 50               |
++----+-------------+---------------+------------------+
+2 rows in set (0.00 sec)
+
+jika ingin mengubah satu2 maka :  UPDATE buku_multimedia  SET nama_santri="carla",jumlah_santri="keempat" where id=2;
+
+dan hasilnya adalh : 
+
+mysql> select * from buku_multimedia;
++----+-------------+---------------+------------------+
+| id | nama_santri | jumlah_santri | jumlah_no_santri |
++----+-------------+---------------+------------------+
+|  1 | hilman      | ketiga        | 50               |
+|  2 | carla       | keempat       | 50               |
++----+-------------+---------------+------------------+
+2 rows in set (0.00 sec)
+ 
+cukup sekian dan terima kasih
